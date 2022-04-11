@@ -46,6 +46,7 @@ def trainRouteClient():
             train_valObj.train_validation()
             trainModelObj = trainModel()
             trainModelObj.trainingModel()
+            return Response("Training Successful")
     except ValueError:
         return Response("Error Occurred! %s" % ValueError)
     except KeyError:
@@ -58,12 +59,12 @@ def trainRouteClient():
 @cross_origin()
 def downloadFile():
     try:
-        if(os.path.isfile("D:\creditCardDefaulters\Prediction_Output_File\Predictions.csv")):
-            csv_path = "D:\creditCardDefaulters\Prediction_Output_File\Predictions.csv"
+        if(os.path.isfile("E:\CreditCardDefaulters\Prediction_Output_File\Predictions.csv")):
+            csv_path = "E:\CreditCardDefaulters\Prediction_Output_File\Predictions.csv"
             csv_file = "Predictions.csv"
             return send_file(csv_path,as_attachment=True,attachment_filename=csv_file)
     except Exception as e:
-        return Response
+        return Exception
 
 if __name__ == "__main__":
     app.run(debug=True)
